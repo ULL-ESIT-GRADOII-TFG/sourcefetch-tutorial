@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Building your first Atom plugin](#building-your-first-atom-plugin)
+  - [Getting Started](#getting-started)
+    - [Installing Atom](#installing-atom)
+    - [Generating starter code](#generating-starter-code)
+    - [Where are Atom packages installed](#where-are-atom-packages-installed)
+    - [Running the starter code](#running-the-starter-code)
+    - [The “toggle” command](#the-toggle-command)
+    - [Atom Commands](#atom-commands)
+  - [Making your first code change](#making-your-first-code-change)
+    - [Change “toggle”](#change-toggle)
+    - [Test your changes](#test-your-changes)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Building your first Atom plugin
 
 [This repo ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial)
