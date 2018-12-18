@@ -537,3 +537,4 @@ and the reverse functionality should work as before.
 
 [See all code changes for this step in the sourcefetch tutorial repository](https://github.com/NickTikhonov/sourcefetch-tutorial/commit/aa3ec5585b0aa049393351a30be14590df09c29a).
 
+![images/right-click-menu-is-updated.png ](images/right-click-menu-is-updated.png )
