@@ -384,7 +384,7 @@ The file exports an object with lifecycle functions which Atom calls on certain 
 - **serialize** is called by Atom to allow you to save the state of the package between uses. i
   - The returned value is passed as an argument to `activate` when the package is next loaded by Atom.
 
-We are going to rename our package command to `fetch`, and remove user interface elements we won’t be using. Update the file to match the version below (see it on branch [step-2]()):
+We are going to rename our package command to `fetch`, and remove user interface elements we won’t be using. Update the file to match the version below (see it on branch [step-2](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-2/lib/sourcefetch.js)):
 
 ```js
 'use babel';
