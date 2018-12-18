@@ -158,6 +158,15 @@ toggle() {
 
 ### Test your changes
 
+```bash
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
+lrwxr-xr-x  1 casiano  staff  33 18 dic 10:48 /Users/casiano/.atom/packages/sourcefetch -> /Users/casiano/github/sourcefetch
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ rm ~/.atom/packages/sourcefetch
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ln -s ~/TFGsrc/build-atom-plugin-sourcefetch-tutorial/ ~/.atom/packages/sourcefetch
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
+lrwxr-xr-x  1 casiano  staff  61 18 dic 12:41 /Users/casiano/.atom/packages/sourcefetch -> /Users/casiano/TFGsrc/build-atom-plugin-sourcefetch-tutorial/
+```
+
 Reload Atom by running `Window: Reload` in the Command Palette
 
 Navigate to 
