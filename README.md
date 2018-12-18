@@ -12,7 +12,13 @@
     - [Atom Commands](#atom-commands)
   - [Making your first code change](#making-your-first-code-change)
     - [Change “toggle”](#change-toggle)
+  - [Linking the Working Space with the Atom Package System](#linking-the-working-space-with-the-atom-package-system)
+    - [linking](#linking)
+  - [Atom command line Options](#atom-command-line-options)
     - [Test your changes](#test-your-changes)
+      - [The Atom Editor API](#the-atom-editor-api)
+  - [Exploring the starter package](#exploring-the-starter-package)
+    - [The main file](#the-main-file)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
