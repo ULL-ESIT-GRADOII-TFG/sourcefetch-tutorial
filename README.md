@@ -508,3 +508,32 @@ We’re going to rename this entry as well:
   }
 ]
 ```
+
+#### Keyboard shortcuts
+
+Commands can also be triggered with keyboard shortcuts, defined with JSON files in the keymaps directory:
+
+```json
+{
+  "atom-workspace": {
+    "ctrl-alt-o": "sourcefetch:toggle"
+  }
+}
+```
+
+The above lets package users call toggle with `Ctrl+Alt+O` on Windows/Linux or `Cmd+Alt+O` on MacOS.
+
+Rename the referenced command to `fetch`:
+
+```json
+"ctrl-alt-o": "sourcefetch:fetch"
+```
+
+If you havve made the changes, reload Atom by running the `Window: Reload` command. 
+Or alternatively, go to branch `step-2` and check the solution.
+
+You should see that the application and `right-click` menus are updated, 
+and the reverse functionality should work as before.
+
+[See all code changes for this step in the sourcefetch tutorial repository](https://github.com/NickTikhonov/sourcefetch-tutorial/commit/aa3ec5585b0aa049393351a30be14590df09c29a).
+
