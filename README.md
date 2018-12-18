@@ -22,6 +22,7 @@
     - [Activation commands](#activation-commands)
     - [Triggering Commands](#triggering-commands)
       - [Menu items](#menu-items)
+      - [Keyboard shortcuts](#keyboard-shortcuts)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
