@@ -56,7 +56,7 @@ You should see a black box appear at the top of the screen. Hide it by running t
 
 ### The “toggle” command
 
-Let’s open `lib/sourcefetch.js`, which contains the package logic and defines the `toggle` command.
+Let’s open [`lib/sourcefetch.js`](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/begin/lib/sourcefetch.js#L40-L47), which contains the package logic and defines the `toggle` command.
 
 ```js
 toggle() {
@@ -130,7 +130,8 @@ to reverse text selected by the user.
 
 ### Change “toggle”
 
-Change the toggle function to match the snippet below (see branch `step-1`).
+Change the toggle function to match the snippet below (see 
+file [lib/sourcefetch.js](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-1/lib/sourcefetch.js#L40-L47branch `step-1`).
 
 ```js
 toggle() {
