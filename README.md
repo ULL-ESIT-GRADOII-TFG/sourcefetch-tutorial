@@ -99,9 +99,9 @@ toggle() {
 
 `toggle` is a function exported by the module.
 
-It uses a ternary operator to call `show` and `hide` on the modal panel based on its visibility. 
+It uses a ternary operator to call `show` and `hide` on the modal panel based on its visibility.
 
-`modalPanel` is an instance of [`Panel`](https://atom.io/docs/api/v1.9.4/Panel), 
+`modalPanel` is an instance of [`Panel`](https://atom.io/docs/api/v1.9.4/Panel),
 a UI element provided by the Atom API.
 
 A `Panel` is a container representing a panel on the edges of the editor window.
@@ -118,8 +118,8 @@ this.subscriptions.add(atom.commands.add('atom-workspace', {
 
 The above statement tells `Atom` to execute `toggle` every time the user runs `sourcefetch:toggle`.
 
-We *subscribe* an anonymous function, `() => this.toggle()`, 
-to be called every time the command is run. 
+We *subscribe* an anonymous function, `() => this.toggle()`,
+to be called every time the command is run.
 
 This is an example of event-driven programming, a common paradigm in JavaScript.
 
@@ -155,12 +155,12 @@ Packages `subscribe` to `commands` in order to execute code in response to these
 
 ## Making your first code change
 
-Let’s make our first code change—we’re going to change `toggle` 
+Let’s make our first code change—we’re going to change `toggle`
 to reverse text selected by the user.
 
 ### Change “toggle”
 
-Change the toggle function to match the snippet below (see 
+Change the toggle function to match the snippet below (see
 file [lib/sourcefetch.js](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-1/lib/sourcefetch.js#L40-L47branch `step-1`).
 
 ```js
@@ -175,6 +175,8 @@ toggle() {
 ```
 
 ## Linking the Working Space with the Atom Package System
+
+### Linking to and from `~/.atom/packages/`
 
 ```bash
 [~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
@@ -197,6 +199,8 @@ drwxr-xr-x  4 casiano  staff   128 18 dic 10:35 spec
 drwxr-xr-x  3 casiano  staff    96 18 dic 10:35 styles
 ```
 
+### Using `apm link [<package_path>] [--name <package_name>]`
+
 Or shorter:
 
 ```bash
@@ -215,7 +219,9 @@ Opciones:
 
 ```
 
-Or use `apm develop`:
+### Using `apm develop <package_name> [<directory>]`
+
+Or use `apm develop <package_name> [<directory>]`:
 
 ```
 ~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ apm help develop
@@ -244,8 +250,8 @@ cd ~/.atom/dev/packages/<package_name>
 atom -d
 ````
 
-- First command clones the github repo into `~/github/<package_name>` and links it to `~/.atom/dev/packages/<package_name>`, 
-- second is obvious, 
+- First command clones the github repo into `~/github/<package_name>` and links it to `~/.atom/dev/packages/<package_name>`,
+- second is obvious,
 - and third runs atom in development mode in which it’s also loading `development` packages from `dev/packages/`
 - If you want to use your modified package in normal mode, too, simply link create a link to it in `~/.atom/packages/`
 - You’ll of course need atom’s shell commands installed for all that.
@@ -308,13 +314,13 @@ Opciones:
 
 Reload Atom by running `Window: Reload` in the Command Palette
 
-Navigate to 
+Navigate to
 
-`File > New` 
+`File > New`
 
 to create a new file, type anything you like and select it with the cursor.
 
-Run the `sourcefetch:toggle` command using the Command Palette, Atom menu, 
+Run the `sourcefetch:toggle` command using the Command Palette, Atom menu,
 or by right clicking and selecting `“Toggle sourcefetch”``
 
 The updated command will toggle the order of the selected text:
