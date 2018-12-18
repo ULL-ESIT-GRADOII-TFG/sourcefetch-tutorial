@@ -378,7 +378,7 @@ The file exports an object with lifecycle functions which Atom calls on certain 
 
 - **activate** is called when the package is initially loaded by Atom. This function is used to initialize objects such as user interface elements needed by the package, and to subscribe handler functions to package commands.
 - **deactivate** is called when the package is deactivated, for example, when the editor is closed or refreshed by the user.
--- **serialize** is called by Atom to allow you to save the state of the package between uses. The returned value is passed as an argument to activate when the package is next loaded by Atom.
+- **serialize** is called by Atom to allow you to save the state of the package between uses. The returned value is passed as an argument to activate when the package is next loaded by Atom.
 
 We are going to rename our package command to `fetch`, and remove user interface elements we won’t be using. Update the file to match the version below:
 
