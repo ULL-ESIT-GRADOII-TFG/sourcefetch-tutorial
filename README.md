@@ -390,7 +390,9 @@ The file exports an object with lifecycle functions which Atom calls on certain 
 - **serialize** is called by Atom to allow you to save the state of the package between uses. i
   - The returned value is passed as an argument to `activate` when the package is next loaded by Atom.
 
-We are going to rename our package command to `fetch`, and remove user interface elements we won’t be using. Update the file to match the version below (see it on branch [step-2](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-2/lib/sourcefetch.js)):
+We are going to rename our package command to `fetch`, and remove user interface elements we won’t be using. 
+
+Update the file to match the version below (see it on branch [step-2](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-2/lib/sourcefetch.js) or `git co step-2`):
 
 ```js
 'use babel';
@@ -423,3 +425,28 @@ export default {
   }
 };
 ```
+
+### Activation commands
+
+To improve performance, Atom packages can be **lazy loading**. 
+
+We can tell Atom to load our package only when certain commands are run by the user. 
+
+These commands are called **activation commands** and are defined in `package.json`:
+
+```json
+"activationCommands": {
+  "atom-workspace": "sourcefetch:toggle"
+},
+```
+
+Update this entry to make fetch an activation command.
+
+```json
+"activationCommands": {
+  "atom-workspace": "sourcefetch:fetch"
+},
+```
+
+Some packages, such as those which modify Atom’s appearance need to be loaded on startup. In those cases, `activationCommands` can be omitted entirely.
+
