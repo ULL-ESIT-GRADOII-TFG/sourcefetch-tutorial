@@ -143,3 +143,22 @@ toggle() {
   }
 }
 ```
+
+### Test your changes
+
+Reload Atom by running `Window: Reload` in the Command Palette
+
+Navigate to 
+
+`File > New` 
+
+to create a new file, type anything you like and select it with the cursor.
+
+Run the `sourcefetch:toggle` command using the Command Palette, Atom menu, 
+or by right clicking and selecting `“Toggle sourcefetch”``
+
+The updated command will toggle the order of the selected text:
+
+![Reversing Selected Text](https://cloud.githubusercontent.com/assets/6755555/17759381/836acd60-64ab-11e6-84dc-4ef4471a361f.gif)
+
+[See all code changes for this step in the sourcefetch tutorial repository](https://github.com/NickTikhonov/sourcefetch-tutorial/commit/89e174ab6ec6e270938338b34905f75bb74dbede).
