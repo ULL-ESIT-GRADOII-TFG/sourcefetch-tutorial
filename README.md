@@ -19,6 +19,9 @@
       - [The Atom Editor API](#the-atom-editor-api)
   - [Exploring the starter package](#exploring-the-starter-package)
     - [The main file](#the-main-file)
+    - [Activation commands](#activation-commands)
+    - [Triggering Commands](#triggering-commands)
+      - [Menu items](#menu-items)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -450,3 +453,58 @@ Update this entry to make fetch an activation command.
 
 Some packages, such as those which modify Atom’s appearance need to be loaded on startup. In those cases, `activationCommands` can be omitted entirely.
 
+### Triggering Commands
+
+#### Menu items
+
+JSON files inside the menus folder specify which menu items are created for our package. Let’s take a look at [menus/sourcefetch.json](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-2/menus/sourcefetch.json):
+
+```json
+"context-menu": {
+  "atom-text-editor": [
+    {
+      "label": "Toggle sourcefetch",
+      "command": "sourcefetch:toggle"
+    }
+  ]
+},
+```
+
+The `context-menu` object lets us define new items in the `right-click` menu. 
+
+- Each item is defined by a `label` to be displayed in the menu 
+- and a `command` to run when the item is clicked.
+
+```json
+"context-menu": {
+  "atom-text-editor": [
+    {
+      "label": "Fetch code",
+      "command": "sourcefetch:fetch"
+    }
+  ]
+},
+```
+
+The menu object in the same file defines custom application menu items created for the package. 
+
+We’re going to rename this entry as well:
+
+```json
+"menu": [
+  {
+    "label": "Packages",
+    "submenu": [
+      {
+        "label": "sourcefetch",
+        "submenu": [
+          {
+            "label": "Fetch code",
+            "command": "sourcefetch:fetch"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
