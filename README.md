@@ -18,15 +18,18 @@ git 2.17.1
 
 ### Generating starter code
 
-Let’s begin by creating a new package using a utility provided by Atom.
+Start in an empty folder  or go to branch `begin`.
 
-Launch the editor and press Cmd+Shift+P (on MacOS) or Ctrl+Shift+P (on Windows/Linux) to open the Command Palette.
+If you start with an empty folder you can do this:
 
-Search for “Package Generator: Generate Package” and click the corresponding item on the list.
-You will see a prompt where you can enter the name of the package - “sourcefetch”.
+- Let’s begin by creating a new package using a utility provided by Atom.
+- Launch the editor and press `Cmd+Shift+P` (on MacOS) or Ctrl+Shift+P (on Windows/Linux) to open the Command Palette.
+- Search for `“Package Generator: Generate Package”` and click the corresponding item on the list.
+- You will see a prompt where you can enter the name of the package - `“sourcefetch”`.
+- Press enter to generate the starter package, which should automatically be opened in Atom.
+- If you don’t see package files appear in the sidebar, press Cmd+K Cmd+B (on MacOS) or Ctrl+K Ctrl+B (on Windows/Linux).
 
-Press enter to generate the starter package, which should automatically be opened in Atom.
-If you don’t see package files appear in the sidebar, press Cmd+K Cmd+B (on MacOS) or Ctrl+K Ctrl+B (on Windows/Linux).
+Otherwise go to the branch `begin`: it ahs the same initial code
 
 ![https://cloud.githubusercontent.com/assets/6755555/17759387/8387a354-64ab-11e6-97db-ea469f008bef.gif](https://cloud.githubusercontent.com/assets/6755555/17759387/8387a354-64ab-11e6-97db-ea469f008bef.gif)
 
@@ -106,4 +109,36 @@ activate(state) {
       'sourcefetch:toggle': () => this.toggle()
     }));
   },
+```
+
+### Atom Commands
+
+Commands are nothing more than string identifiers for events triggered by the user, defined within a package namespace. We’ve already used:
+
+```json
+package-generator:generate-package
+window:reload
+sourcefetch:toggle
+```
+
+Packages `subscribe` to `commands` in order to execute code in response to these events.
+
+## Making your first code change
+
+Let’s make our first code change—we’re going to change `toggle` 
+to reverse text selected by the user.
+
+### Change “toggle”
+
+Change the toggle function to match the snippet below (see branch `step-1`).
+
+```js
+toggle() {
+  let editor
+  if (editor = atom.workspace.getActiveTextEditor()) {
+    let selection = editor.getSelectedText()
+    let reversed = selection.split('').reverse().join('')
+    editor.insertText(reversed)
+  }
+}
 ```
