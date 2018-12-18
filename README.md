@@ -174,7 +174,7 @@ toggle() {
 }
 ```
 
-### Test your changes
+## Linking the Working Space with the Atom Package System
 
 ```bash
 [~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
@@ -183,7 +183,128 @@ lrwxr-xr-x  1 casiano  staff  33 18 dic 10:48 /Users/casiano/.atom/packages/sour
 [~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ln -s ~/TFGsrc/build-atom-plugin-sourcefetch-tutorial/ ~/.atom/packages/sourcefetch
 [~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
 lrwxr-xr-x  1 casiano  staff  61 18 dic 12:41 /Users/casiano/.atom/packages/sourcefetch -> /Users/casiano/TFGsrc/build-atom-plugin-sourcefetch-tutorial/
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ ls -l
+total 40
+-rw-r--r--  1 casiano  staff    65 18 dic 10:35 CHANGELOG.md
+-rw-r--r--  1 casiano  staff  1060 18 dic 10:35 LICENSE.md
+-rw-r--r--  1 casiano  staff  7817 18 dic 12:50 README.md
+drwxr-xr-x  3 casiano  staff    96 18 dic 12:50 keymaps
+drwxr-xr-x  3 casiano  staff    96 18 dic 12:50 lib
+drwxr-xr-x  3 casiano  staff    96 18 dic 12:50 menus
+-rw-r--r--  1 casiano  staff   452 18 dic 12:50 package.json
+lrwxr-xr-x  1 casiano  staff    41 18 dic 12:40 sourcefetch -> /Users/casiano/.atom/packages/sourcefetch
+drwxr-xr-x  4 casiano  staff   128 18 dic 10:35 spec
+drwxr-xr-x  3 casiano  staff    96 18 dic 10:35 styles
 ```
+
+Or shorter:
+
+```bash
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ apm help link
+
+Usage: apm link [<package_path>] [--name <package_name>]
+
+Create a symlink for the package in ~/.atom/packages. The package in the
+current working directory is linked if no path is given.
+
+Run `apm links` to view all the currently linked packages.
+
+Opciones:
+  -h, --help  Print this usage message
+  -d, --dev   Link to ~/.atom/dev/packages                                                 [boolean]
+
+```
+
+Or use `apm develop`:
+
+```
+~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ apm help develop
+Usage: apm develop <package_name> [<directory>]
+
+Clone the given package's Git repository to the directory specified,
+install its dependencies, and link it for development to
+~/.atom/dev/packages/<package_name>.
+
+If no directory is specified then the repository is cloned to
+~/github/<package_name>. The default folder to clone packages into can
+be overridden using the ATOM_REPOS_HOME environment variable.
+
+Once this command completes you can open a dev window from atom using
+cmd-shift-o to run the package out of the newly cloned repository.
+
+Opciones:
+  -h, --help  Print this usage message
+```
+
+The workflow - as far as I understand it - is:
+
+```
+apm develop <package_name>
+cd ~/.atom/dev/packages/<package_name>
+atom -d
+````
+
+- First command clones the github repo into `~/github/<package_name>` and links it to `~/.atom/dev/packages/<package_name>`, 
+- second is obvious, 
+- and third runs atom in development mode in which it’s also loading `development` packages from `dev/packages/`
+- If you want to use your modified package in normal mode, too, simply link create a link to it in `~/.atom/packages/`
+- You’ll of course need atom’s shell commands installed for all that.
+
+## Atom command line Options
+
+Observe option `-d`, and `ATOM_DEV_RESOURCE_PATH` and `ATOM_HOME`.
+See [Load developing package](https://discuss.atom.io/t/load-developing-package/2554/5)
+
+```
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ atom --help
+Atom Editor v1.33.0
+
+Usage:
+  atom [options] [path ...]
+  atom file[:line[:column]]
+
+One or more paths to files or folders may be specified. If there is an
+existing Atom window that contains all of the given folders, the paths
+will be opened in that window. Otherwise, they will be opened in a new
+window.
+
+A file may be opened at the desired line (and optionally column) by
+appending the numbers right after the file name, e.g. `atom file:5:8`.
+
+Paths that start with `atom://` will be interpreted as URLs.
+
+Environment Variables:
+
+  ATOM_DEV_RESOURCE_PATH  The path from which Atom loads source code in dev mode.
+                          Defaults to `~/github/atom`.
+
+  ATOM_HOME               The root path for all configuration files and folders.
+                          Defaults to `~/.atom`.
+
+Opciones:
+  -1, --one                  This option is no longer supported.  [boolean]
+  --include-deprecated-apis  This option is not currently supported.  [boolean]
+  -d, --dev                  Run in development mode.  [boolean]
+  -f, --foreground           Keep the main process in the foreground.  [boolean]
+  -h, --help                 Print this usage message.  [boolean]
+  -l, --log-file             Log all output to file.  [cadena de caracteres]
+  -n, --new-window           Open a new window.  [boolean]
+  --profile-startup          Create a profile of the startup execution time.  [boolean]
+  -r, --resource-path        Set the path to the Atom source directory and enable dev-mode.  [cadena de caracteres]
+  --safe                     Do not load packages from ~/.atom/packages or ~/.atom/dev/packages.  [boolean]
+  --benchmark                Open a new window that runs the specified benchmarks.  [boolean]
+  --benchmark-test           Run a faster version of the benchmarks in headless mode.  [boolean]
+  -t, --test                 Run the specified specs and exit with error code on failures.  [boolean]
+  -m, --main-process         Run the specified specs in the main process.  [boolean]
+  --timeout                  When in test mode, waits until the specified time (in minutes) and kills the process (exit code: 130).  [cadena de caracteres]
+  -v, --version              Print the version information.  [boolean]
+  -w, --wait                 Wait for window to be closed before returning.  [boolean]
+  --clear-window-state       Delete all Atom environment state.  [boolean]
+  --enable-electron-logging  Enable low-level logging messages from Electron.  [boolean]
+  -a, --add                  Open path as a new project in last used window.  [boolean]
+```
+
+### Test your changes
 
 Reload Atom by running `Window: Reload` in the Command Palette
 
