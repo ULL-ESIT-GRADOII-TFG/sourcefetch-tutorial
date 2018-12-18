@@ -12,11 +12,6 @@
     - [Atom Commands](#atom-commands)
   - [Making your first code change](#making-your-first-code-change)
     - [Change “toggle”](#change-toggle)
-  - [Linking the Working Space with the Atom Package System](#linking-the-working-space-with-the-atom-package-system)
-    - [Linking to and from `~/.atom/packages/`](#linking-to-and-from-atompackages)
-    - [Using `apm link [<package_path>] [--name <package_name>]`](#using-apm-link-package_path---name-package_name)
-    - [Using `apm develop <package_name> [<directory>]`](#using-apm-develop-package_name-directory)
-  - [Atom command line Options](#atom-command-line-options)
     - [Test your changes](#test-your-changes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -104,9 +99,9 @@ toggle() {
 
 `toggle` is a function exported by the module.
 
-It uses a ternary operator to call `show` and `hide` on the modal panel based on its visibility.
+It uses a ternary operator to call `show` and `hide` on the modal panel based on its visibility. 
 
-`modalPanel` is an instance of [`Panel`](https://atom.io/docs/api/v1.9.4/Panel),
+`modalPanel` is an instance of [`Panel`](https://atom.io/docs/api/v1.9.4/Panel), 
 a UI element provided by the Atom API.
 
 A `Panel` is a container representing a panel on the edges of the editor window.
@@ -123,8 +118,8 @@ this.subscriptions.add(atom.commands.add('atom-workspace', {
 
 The above statement tells `Atom` to execute `toggle` every time the user runs `sourcefetch:toggle`.
 
-We *subscribe* an anonymous function, `() => this.toggle()`,
-to be called every time the command is run.
+We *subscribe* an anonymous function, `() => this.toggle()`, 
+to be called every time the command is run. 
 
 This is an example of event-driven programming, a common paradigm in JavaScript.
 
@@ -160,12 +155,12 @@ Packages `subscribe` to `commands` in order to execute code in response to these
 
 ## Making your first code change
 
-Let’s make our first code change—we’re going to change `toggle`
+Let’s make our first code change—we’re going to change `toggle` 
 to reverse text selected by the user.
 
 ### Change “toggle”
 
-Change the toggle function to match the snippet below (see
+Change the toggle function to match the snippet below (see 
 file [lib/sourcefetch.js](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial/blob/step-1/lib/sourcefetch.js#L40-L47branch `step-1`).
 
 ```js
@@ -181,8 +176,7 @@ toggle() {
 
 ## Linking the Working Space with the Atom Package System
 
-### Linking to and from `~/.atom/packages/`
-
+### linking
 ```bash
 [~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -la ~/.atom/packages/sourcefetch
 lrwxr-xr-x  1 casiano  staff  33 18 dic 10:48 /Users/casiano/.atom/packages/sourcefetch -> /Users/casiano/github/sourcefetch
@@ -204,8 +198,6 @@ drwxr-xr-x  4 casiano  staff   128 18 dic 10:35 spec
 drwxr-xr-x  3 casiano  staff    96 18 dic 10:35 styles
 ```
 
-### Using `apm link [<package_path>] [--name <package_name>]`
-
 Or shorter:
 
 ```bash
@@ -224,9 +216,7 @@ Opciones:
 
 ```
 
-### Using `apm develop <package_name> [<directory>]`
-
-Or use `apm develop <package_name> [<directory>]`:
+Or use `apm develop`:
 
 ```
 ~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(master)]$ apm help develop
@@ -255,8 +245,8 @@ cd ~/.atom/dev/packages/<package_name>
 atom -d
 ````
 
-- First command clones the github repo into `~/github/<package_name>` and links it to `~/.atom/dev/packages/<package_name>`,
-- second is obvious,
+- First command clones the github repo into `~/github/<package_name>` and links it to `~/.atom/dev/packages/<package_name>`, 
+- second is obvious, 
 - and third runs atom in development mode in which it’s also loading `development` packages from `dev/packages/`
 - If you want to use your modified package in normal mode, too, simply link create a link to it in `~/.atom/packages/`
 - You’ll of course need atom’s shell commands installed for all that.
@@ -319,13 +309,13 @@ Opciones:
 
 Reload Atom by running `Window: Reload` in the Command Palette
 
-Navigate to
+Navigate to 
 
-`File > New`
+`File > New` 
 
 to create a new file, type anything you like and select it with the cursor.
 
-Run the `sourcefetch:toggle` command using the Command Palette, Atom menu,
+Run the `sourcefetch:toggle` command using the Command Palette, Atom menu, 
 or by right clicking and selecting `“Toggle sourcefetch”``
 
 The updated command will toggle the order of the selected text:
@@ -333,3 +323,43 @@ The updated command will toggle the order of the selected text:
 ![Reversing Selected Text](https://cloud.githubusercontent.com/assets/6755555/17759381/836acd60-64ab-11e6-84dc-4ef4471a361f.gif)
 
 [See all code changes for this step in the sourcefetch tutorial repository](https://github.com/NickTikhonov/sourcefetch-tutorial/commit/89e174ab6ec6e270938338b34905f75bb74dbede).
+
+
+#### The Atom Editor API
+
+The code we added uses the [TextEditor API](https://atom.io/docs/api/latest/TextEditor) 
+to access and manipulate the text inside the editor. 
+
+The [TextEditor](https://atom.io/docs/api/latest/TextEditor) class represents all essential editing state for a single [TextBuffer](https://atom.io/docs/api/v1.33.0/TextBuffer), including cursor and selection positions, folds, and soft wraps. 
+If you're manipulating the state of an editor, use this class.
+
+Let’s take a closer look.
+
+```js
+let editor
+if (editor = atom.workspace.getActiveTextEditor()) { /* ... */ }
+```
+
+The first two lines obtain a reference to a [TextEditor](https://atom.io/docs/api/latest/TextEditor) instance. 
+
+The variable assignment and following code is wrapped in a conditional to handle the case where there is no text editor instance available, for example, if the command was run while the user was in the settings menu.
+
+```js
+let selection = editor.getSelectedText()
+```
+
+Calling `getSelectedText` gives us access to text selected by the user. 
+
+If no text is currently selected, the function returns an empty string.
+
+```js
+let reversed = selection.split('').reverse().join('')
+editor.insertText(reversed)
+```
+
+Our selected text is reversed using JavaScript String methods. 
+
+Finally, we call `insertText` to replace the selected text with the reversed counterpart.
+
+You can learn more about the different [TextEditor](https://atom.io/docs/api/latest/TextEditor)  methods available by reading the [Atom API documentation](https://atom.io/docs/api/latest/TextEditor).
+
