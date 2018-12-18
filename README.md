@@ -64,12 +64,16 @@ toggle() {
 }
 ```
 
-`toggle` is a function exported by the module. 
+`toggle` is a function exported by the module.
 
 It uses a ternary operator to call `show` and `hide` on the modal panel based on its visibility. 
 
 `modalPanel` is an instance of [`Panel`](https://atom.io/docs/api/v1.9.4/Panel), 
 a UI element provided by the Atom API.
+
+A `Panel` is a container representing a panel on the edges of the editor window.
+
+You should not create a `Panel` directly, instead use `Workspace::addTopPanel` and friends to add panels.
 
 We declare `modalPanel` inside `export` default, which lets us access it as an instance variable with `this`.
 
