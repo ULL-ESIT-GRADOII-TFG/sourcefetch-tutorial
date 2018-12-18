@@ -29,9 +29,21 @@ If you start with an empty folder you can do this:
 - Press enter to generate the starter package, which should automatically be opened in Atom.
 - If you don’t see package files appear in the sidebar, press Cmd+K Cmd+B (on MacOS) or Ctrl+K Ctrl+B (on Windows/Linux).
 
-Otherwise go to the branch `begin`: it ahs the same initial code
+Otherwise go to the branch `begin`: it has the same initial code
 
 ![https://cloud.githubusercontent.com/assets/6755555/17759387/8387a354-64ab-11e6-97db-ea469f008bef.gif](https://cloud.githubusercontent.com/assets/6755555/17759387/8387a354-64ab-11e6-97db-ea469f008bef.gif)
+
+
+### Where are Atom packages installed
+
+They are in `~/.atom/packages`
+
+```bash
+[~/TFGsrc/build-atom-plugin-sourcefetch-tutorial(step-1)]$ ls -l ~/.atom/packages/sourcefetch
+lrwxr-xr-x  1 casiano  staff  33 18 dic 10:48 /Users/casiano/.atom/packages/sourcefetch -> /Users/casiano/github/sourcefetch
+```
+
+Observe the symbolic link
 
 ### Running the starter code
 
