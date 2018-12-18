@@ -12,6 +12,11 @@
     - [Atom Commands](#atom-commands)
   - [Making your first code change](#making-your-first-code-change)
     - [Change “toggle”](#change-toggle)
+  - [Linking the Working Space with the Atom Package System](#linking-the-working-space-with-the-atom-package-system)
+    - [Linking to and from `~/.atom/packages/`](#linking-to-and-from-atompackages)
+    - [Using `apm link [<package_path>] [--name <package_name>]`](#using-apm-link-package_path---name-package_name)
+    - [Using `apm develop <package_name> [<directory>]`](#using-apm-develop-package_name-directory)
+  - [Atom command line Options](#atom-command-line-options)
     - [Test your changes](#test-your-changes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
