@@ -25,6 +25,8 @@
     - [Triggering Commands](#triggering-commands)
       - [Menu items](#menu-items)
       - [Keyboard shortcuts](#keyboard-shortcuts)
+  - [Using NodeJS modules](#using-nodejs-modules)
+    - [Installing dependencies](#installing-dependencies)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -538,7 +540,7 @@ Rename the referenced command to `fetch`:
 "ctrl-alt-o": "sourcefetch:fetch"
 ```
 
-If you havve made the changes, reload Atom by running the `Window: Reload` command. 
+If you have made the changes, reload Atom by running the `Window: Reload` command. 
 Or alternatively, go to branch `step-2` and check the solution.
 
 You should see that the application and `right-click` menus are updated, 
@@ -547,3 +549,35 @@ and the reverse functionality should work as before.
 [See all code changes for this step in the sourcefetch tutorial repository](https://github.com/NickTikhonov/sourcefetch-tutorial/commit/aa3ec5585b0aa049393351a30be14590df09c29a).
 
 ![images/right-click-menu-is-updated.png ](images/right-click-menu-is-updated.png )
+
+## Using NodeJS modules
+
+Now that we’ve made our first code change and learned about Atom package structure, 
+let’s introduce our first dependency—a module from Node Package Manager (npm). 
+
+We will use the request module to make HTTP requests and download the HTML of a website. 
+
+This functionality will be needed later, to scrape StackOverflow pages.
+
+### Installing dependencies
+
+Open your command line application, navigate to your package root directory and run:
+
+```bash
+npm install --save request@2.73.0
+apm install
+```
+
+These commands add the request Node module to our dependencies list and install the module into the `node_modules` directory. 
+
+You should see a new entry in `package.json`. 
+
+The `@` symbol tells npm to install the specific version we will be using for this tutorial. 
+
+Running `apm` install lets Atom know to use our newly installed module.
+
+```json
+"dependencies": {
+  "request": "^2.73.0"
+}
+```
