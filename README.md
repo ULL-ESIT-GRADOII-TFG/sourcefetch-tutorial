@@ -9,8 +9,8 @@
     - [Where are Atom packages installed](#where-are-atom-packages-installed)
   - [Linking the Working Space with the Atom Package System](#linking-the-working-space-with-the-atom-package-system)
     - [Linking manually](#linking-manually)
-    - [apm link `\[<package_path>\] \[--name <package_name>\]`](#apm-link-%5Cpackage_path%5C-%5C--name-package_name%5C)
-    - [apm develop `<package_name> \[ \<directory> \]`](#apm-develop-package_name-%5C-%5Cdirectory-%5C)
+    - [apm link \[<package_path>\] \[--name <package_name>\]](#apm-link-%5Cpackage_path%5C-%5C--name-package_name%5C)
+    - [apm develop <package_name> \[ \<directory> \]](#apm-develop-package_name-%5C-%5Cdirectory-%5C)
   - [Atom command line Options](#atom-command-line-options)
     - [Running the starter code](#running-the-starter-code)
     - [The “toggle” command](#the-toggle-command)
@@ -30,7 +30,8 @@
 
 # Building your first Atom plugin
 
-[This repo ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial)
+- This repo is the result of following the tutorial [Building your first Atom plugin](https://blog.github.com/2016-08-19-building-your-first-atom-plugin/#installing-atom) Authored by GitHub Campus Expert @NickTikhonov.
+- [This repo ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial](https://github.com/ULL-ESIT-GRADOII-TFG/sourcefetch-tutorial)
 
 ## Getting Started
 
@@ -100,7 +101,7 @@ drwxr-xr-x  4 casiano  staff   128 18 dic 10:35 spec
 drwxr-xr-x  3 casiano  staff    96 18 dic 10:35 styles
 ```
 
-### apm link `\[<package_path>\] \[--name <package_name>\]`
+### apm link \[<package_path>\] \[--name <package_name>\]
 
 Or shorter:
 
@@ -120,7 +121,7 @@ Opciones:
 
 ```
 
-### apm develop `<package_name> \[ \<directory> \]`
+### apm develop <package_name> \[ \<directory> \]
 
 Or use `apm develop`:
 
