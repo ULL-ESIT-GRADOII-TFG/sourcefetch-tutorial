@@ -10,6 +10,7 @@
   - [Linking the Working Space with the Atom Package System](#linking-the-working-space-with-the-atom-package-system)
     - [Linking manually](#linking-manually)
     - [apm link[<package_path>] [--name <package_name>]](#apm-linkpackage_path---name-package_name)
+    - [apm develop <package_name> [<directory>]](#apm-develop-package_name-directory)
   - [Atom command line Options](#atom-command-line-options)
     - [Running the starter code](#running-the-starter-code)
     - [The “toggle” command](#the-toggle-command)
@@ -119,7 +120,7 @@ Opciones:
 
 ```
 
-###apm develop <package_name> [<directory>]
+### apm develop <package_name> [<directory>]
 
 Or use `apm develop`:
 
